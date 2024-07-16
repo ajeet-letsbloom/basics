@@ -1,9 +1,3 @@
-
-function getTextFromInput() {
-
-    return inputElement.value;
-}
-
 function removeTodo(obj) {
     let toRemoveLi = obj.parentNode
     let todoList = document.getElementById("todo-list")
@@ -27,10 +21,6 @@ function getNewLiElement(text) {
     newLi.appendChild(textP)
     newLi.appendChild(closeButton)
     return newLi
-}
-
-function dummyCall() {
-    console.log("This is dummy button")
 }
 
 function createTodo() {
