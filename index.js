@@ -1,5 +1,5 @@
-function removeTodo(obj) {
-    let toRemoveLi = obj.parentNode
+function removeTodo() {
+    let toRemoveLi = this.parentNode
     let todoList = document.getElementById("todo-list")
     todoList.removeChild(toRemoveLi)
 }
@@ -16,7 +16,8 @@ function getNewLiElement(text) {
     let closeButton = document.createElement("button")
     closeButton.className = "delete-todo-icon"
     closeButton.innerHTML = "x"
-    closeButton.addEventListener('click', ()=>removeTodo(closeButton))
+    // closeButton.addEventListener('click', ()=>removeTodo(closeButton))
+    closeButton.onclick = removeTodo
     // append text and button elements
     newLi.appendChild(textP)
     newLi.appendChild(closeButton)
@@ -42,3 +43,18 @@ function createTodo() {
 
     inputTextElement.value = ""
 }
+
+
+function fetchTodos(){
+    fetch("https://jsonplaceholder.typicode.com/todos")
+    .then(response=>response.json())
+    .then((response)=>{
+        let todoList = document.getElementById("todo-list")
+        response.forEach(element => {
+            let newLi = getNewLiElement(element.title)
+            todoList.appendChild(newLi)
+        })
+    })
+}
+
+fetchTodos();
