@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('todo-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        createTodo();
+    }) 
+});
+
 function removeTodo() {
     let toRemoveLi = this.parentNode
     let todoList = document.getElementById("todo-list")
@@ -45,16 +52,16 @@ function createTodo() {
 }
 
 
-function fetchTodos(){
+function fetchTodos() {
     fetch("https://jsonplaceholder.typicode.com/todos")
-    .then(response=>response.json())
-    .then((response)=>{
-        let todoList = document.getElementById("todo-list")
-        response.forEach(element => {
-            let newLi = getNewLiElement(element.title)
-            todoList.appendChild(newLi)
+        .then(response => response.json())
+        .then((response) => {
+            let todoList = document.getElementById("todo-list")
+            response.forEach(element => {
+                let newLi = getNewLiElement(element.title)
+                todoList.appendChild(newLi)
+            })
         })
-    })
 }
 
 fetchTodos();
