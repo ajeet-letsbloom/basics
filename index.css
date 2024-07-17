@@ -86,7 +86,9 @@ body {
     padding: 4px 6px;
     margin: 0;
     line-height: 1.3;
-    
+    flex:1;
+
+    overflow-wrap: anywhere;
 }
 
 .delete-todo-icon {
