@@ -57,6 +57,10 @@ function fetchTodos() {
         .then(response => response.json())
         .then((response) => {
             let todoList = document.getElementById("todo-list")
+            while (todoList.firstChild) {
+                todoList.removeChild(todoList.firstChild);
+            }
+
             response.forEach(element => {
                 let newLi = getNewLiElement(element.title)
                 todoList.appendChild(newLi)
